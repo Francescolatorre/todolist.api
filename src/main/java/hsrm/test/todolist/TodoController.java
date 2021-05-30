@@ -6,15 +6,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @Slf4j
-@CrossOrigin(maxAge = 3600)
 @RestController
+@CrossOrigin(origins = "*")
+
 public class TodoController {
     private final TodoRepository repository;
 
     public TodoController (TodoRepository repository) {
         this.repository = repository;
     }
-
+    @CrossOrigin("http://example.com")
     @GetMapping("/todo")
     Iterable<TodoItem> all(){
         return repository.findAll();
