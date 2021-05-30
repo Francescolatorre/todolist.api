@@ -15,24 +15,24 @@ public class TodoController {
         this.repository = repository;
     }
 
-    @GetMapping("/todos")
+    @GetMapping("/todo")
     Iterable<TodoItem> all(){
         return repository.findAll();
     }
 
-    @GetMapping("/todos/{id}")
+    @GetMapping("/todo/{id}")
     TodoItem one(@PathVariable Long id){
         return repository.findById(id)
                 .orElseThrow( () -> new TodoItemNotFoundException(id));
     }
 
-    @PostMapping("/todos/")
+    @PostMapping("/todo/")
     public TodoItem createTodo(@RequestBody TodoItem todoItem){
         return repository.save(todoItem);
     }
 
 
-    @PutMapping("/todos/{id}")
+    @PutMapping("/todo/{id}")
     public TodoItem updateTodo(@RequestBody TodoItem todoItem, @PathVariable("id") Long id){
         System.out.println(todoItem);
         if(repository.existsById(id)) {
@@ -52,7 +52,7 @@ public class TodoController {
         return todoItem;
     }
 
-    @DeleteMapping(path = "/todos/{id}")
+    @DeleteMapping(path = "/todo/{id}")
     public void deleteTodo(@PathVariable("id") Long id){
         if(repository.existsById(id)){
             repository.deleteById(id);

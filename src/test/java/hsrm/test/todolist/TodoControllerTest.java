@@ -40,7 +40,7 @@ public class TodoControllerTest {
 
         when(todoController.all()).thenReturn(Arrays.asList(todo1,todo2));
 
-        mockMvc.perform(get("/todos"))
+        mockMvc.perform(get("/todo"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].id", is(1)))
