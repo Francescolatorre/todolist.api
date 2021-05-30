@@ -7,8 +7,6 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
-@CrossOrigin(origins = "*")
-
 public class TodoController {
     private final TodoRepository repository;
 
